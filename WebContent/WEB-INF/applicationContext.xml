@@ -25,8 +25,9 @@
 <bean id="dataSource"
 	  class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	  <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-	  <property name="url" value="jdbc:mysql://localhost:3306/basecms1" />
+	  <property name="url" value="jdbc:mysql://localhost:3306/projetloncoto" />
 	  <property name="username" value="root" />
+	  <property name="password" value="" />
 </bean>
 
 <bean id="entityManagerFactory"
@@ -52,6 +53,5 @@
 
 <tx:annotation-driven transaction-manager="transactionManager" />
 
-<mvc:annotation-driven/>
 
 </beans>

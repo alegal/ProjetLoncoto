@@ -13,6 +13,8 @@ public class Materiel
 	private List<Intervention> interventions;
 	private Salle salle;
 	private Client client;
+	private Article article;
+	
 	
 	@Id @GeneratedValue
 	public int getId() {
@@ -56,6 +58,9 @@ public class Materiel
 	public void setClient(Client client) {
 		this.client = client;
 	}
+	@ManyToOne
+	public Article getArticle() {return article;}
+	public void setArticle(Article article) {this.article = article;}
 	
 	public Materiel() {this(0, "", "");}
 	public Materiel(int id, String numSerie, String typeIntervention) {
