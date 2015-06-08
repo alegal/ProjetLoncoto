@@ -4,14 +4,45 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+<link type="text/css" rel="stylesheet" href="css/app.css"  media="screen,projection"/>
 <h:head>
 <title>Menu</title>
 </h:head>
 <h:body>
-<h1 class="title">SUPER CMS</h1>
-<div align="center">
-<h:form>
-</h:form>
+<div class="row">
+	<h:form class="col s12">
+	<div class="card">
+
+		
+		<div class="card-content">
+		LOGIN
+			<div id="content-log" class="input-field col s12">
+				<i class="mdi-action-perm-identity prefix"></i>
+				<h:inputText id="icon_login" name="login" class="validate"/>
+	          	<label for="icon_login">Login</label>
+			</div>
+		
+			<div class="input-field col s12">
+				<i class="mdi-action-lock prefix"></i>
+				<h:inputText id="icon_pass" name="login" class="validate"/>
+	          	<label for="icon_pass">Password</label>
+			</div>
+		</div>	
+		
+			<div id="log-btn" class="card-action ">
+			<h:commandButton class="waves-effect waves-light btn col s12 blue lighten-1"  value="Login" action="#{loginBean.login}" />
+			</div>
+
+	</div>
+	</h:form>
 </div>
-<hr style="margin-top: 100px"/>
-</h:body></html>
+
+ 
+ 
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+</h:body>
+
+</html>

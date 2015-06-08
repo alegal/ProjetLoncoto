@@ -1,0 +1,35 @@
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  #primary {
+    flex: 1 0 auto !important;
+  }
+
+
+  footer.page-footer {
+  	padding-top: 0 !important;
+  }
+
+  #sidebar {
+  	background:#333;
+  	height: 100%;
+  }
+  
+  .card-content {
+  	text-align: center;
+  }
+  
+  #log-btn {
+  	padding:0;
+  	border-radius :0;
+  }
+  
+  #content-log {
+  	margin-top:40px;
+  }
+  .card-action {
+ 	 margin-bottom:10px;
+  }
