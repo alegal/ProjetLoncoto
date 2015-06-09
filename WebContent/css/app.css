@@ -18,22 +18,6 @@
   	height: 100%;
   }
   
-  .card-content {
-  	text-align: center;
-  }
-  
-  #log-btn {
-  	padding:0;
-  	border-radius :0;
-  }
-  
-  #content-log {
-  	margin-top:40px;
-  }
-  .card-action {
- 	 margin-bottom:10px;
-  }
-  
   nav.primary {
   line-height:50px;
   height:50px !important;
@@ -60,4 +44,32 @@
 		nav a.button-collapse-second {
 			display:none;
 		}
+	}
+
+	
+	.container-log {
+	  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+	}
+	
+	.block-log {
+		margin:auto !important;
+	}
+	
+	
+	.card .card-action a {
+	color:#fff !important;
+	}
+	
+	.card .card-action a:hover {
+	color:#eeeeee !important;
+	}
+	
+	#body-id {
+	  background: url(../img/BG.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 	}

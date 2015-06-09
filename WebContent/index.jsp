@@ -7,34 +7,48 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="css/list.css" />
-<base href="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/"/>
-<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
-<script type="text/javascript" src="js/jquery.formvalidation.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-    $("#formConnect").formValidation({
-        alias       : "name",
-        required    : "accept",
-        err_list    : true
-    }); 
-
-});
-</script>
 <title>Projet Loncoto</title>
+<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+<link type="text/css" rel="stylesheet" href="css/app.css"  media="screen,projection"/>
 </head>
-<body>
+<body id="body-id">
+      <div class="row container-log container">
+        <div class="col s12 m6 block-log">
+          <div class="card">
+
+            <div class="card-content">
+            LOGIN
+            <div class="row">
+	            <form class="col m12" id="formConnect" action="userConnect" method="post">
+					<div class="row">
+				        <div class="input-field col s12">
+				        <i class="mdi-image-timer-auto prefix"></i>
+				          <input required="true" type="text" value="" id="login" name="login" />
+				          <label for="login">Login</label>
+				        </div>
+				        
+				        <div class="input-field col s12">
+				        <i class="mdi-action-lock prefix"></i>
+				          <input required="true" type="password" value="" id="mdp" name="mdp" />
+				          <label for="mdp">Password</label>
+				        </div>				        
+					</div>
+
+			</div>
+            </div>
+
+            <div class="card-action">
+            	<s:submit value="Connexion" class="waves-effect waves-light btn col m12 blue lighter-2" />
+
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
 
 
-<h2>Connexion</h2>
-<form id="formConnect" action="userConnect" method="post">
 
-Identifiant : <input required="true" type="text" value="" id="login" name="login" /><!-- <p class="error"></p> -->
-<br/>
-Mot de passe : <input required="true" type="password" value="" id="mdp" name="mdp" /><!-- <p class="error"></p> -->
-<br/>
-<s:submit value="Connexion" />
-</form>
-
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
 </html>
