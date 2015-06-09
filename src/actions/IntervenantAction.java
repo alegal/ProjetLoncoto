@@ -135,10 +135,9 @@ public class IntervenantAction extends ActionSupport implements SessionAware
 	
 	
 	// Fonction permettant la connection
-	public String connectIntervenant(){
+	public String userConnect(){
 		
 		Intervenant it = iusers.find(login, mdp);
-		
 		if(it != null){
 			interV = iusers.findAllIntervention();
 			session.put("login", login);

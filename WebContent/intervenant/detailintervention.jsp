@@ -5,37 +5,36 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>détail intervention</title>
+<title>Détails des interventions</title>
 </head>
 <body>
-<h2>détail interventions</h2>
+<h2>Détails de l'intervention <s:property value="%{numIntervention}"/></h2>
 
-<h2>Fiche n°  <s:property value="%{interventionID}"/></h2>
 <table>
 	<tr>
-		<td align="right">Nom : </td>
-		<td><s:property value="interventionNom" /></td>
+		<td align="right">Numéro d'intervention : </td>
+		<td><s:property value="numIntervention" /></td>
 	</tr>
 	<tr>
 		<td align="right">Statut : </td>
-		<s:if test="interventionStatut==1"><td bgcolor="red"><font style="color:white;font-weight:bold">A FAIRE</font></td></s:if>
-		<s:elseif test="interventionStatut==2"><td bgcolor="yellow">En cours</td></s:elseif>
+		<s:if test="statutIntervention==1"><td bgcolor="red"><font style="color:white;font-weight:bold">A réaliser</font></td></s:if>
+		<s:elseif test="statutIntervention==2"><td bgcolor="yellow">En cours</td></s:elseif>
 		<s:else><td bgcolor="green"><font style="color:white">Terminée</font></td></s:else>
 	</tr>
 	<tr>
 		<td align="right">Commentaire</td>
-		<td><s:property value="interventionCommentaire"/></td>
+		<td><s:property value="comIntervention"/></td>
 	</tr>
 	<tr>
-		<td align="right">Date de création</td>
-		<td><s:property value="interventionCreated_at"/></td>
+		<td align="right">Date de réalisation</td>
+		<td><s:property value="dateRealisationIntervention"/></td>
 	</tr>
 	<tr>
-		<td align="right">Date de planification</td>
-		<td><s:property value="interventionPlanified_at"/></td>
+		<td align="right">Date planifiée</td>
+		<td><s:property value="datePlanifieeIntervention"/></td>
 	</tr>
 	<tr>
-		<td align="right">options</td>
+		<td align="right">Ajout d'informations complémentaires</td>
 		<td>
 				<form action="importerFichier" method="POST" enctype="multipart/form-data">
 					<input type="file" name="fichierExcel" class="btn" /><br><br>

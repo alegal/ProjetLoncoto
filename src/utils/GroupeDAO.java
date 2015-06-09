@@ -20,7 +20,7 @@ public class GroupeDAO implements IGroupe
 
 	@Transactional
 	public List<Groupe> findAllGroupe() {
-		return entityManager.createQuery("FROM Groupe").getResultList();
+		return entityManager.createQuery("FROM Groupe", Groupe.class).getResultList();
 	}
 
 	@Transactional

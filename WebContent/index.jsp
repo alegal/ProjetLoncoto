@@ -13,7 +13,7 @@
 <script type="text/javascript" src="js/jquery.formvalidation.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-    $("#formintervenant").formValidation({
+    $("#formConnect").formValidation({
         alias       : "name",
         required    : "accept",
         err_list    : true
@@ -21,25 +21,19 @@ $(document).ready(function(){
 
 });
 </script>
-<title>Loncotos</title>
+<title>Projet Loncoto</title>
 </head>
 <body>
 
 
-<h2>Connexion </h2>
-<form id="formintervenant" action="connectIntervenant" method="post">
-<table border="1">
-<tr>
-	<td>Login<input required="true" type="text" value="" id="login" name="login" /> </td><td style="display:none"><p class="error"></p></td>
-</tr>
-<tr>
-	<td>Password<input required="true" type="password" value="" id="pass" name="pass" /></td><td style="display:none"><p class="error"></p></td>
-</tr>
-<tr>
-	<td><s:submit value="Connexion" /></td>
-</tr>
+<h2>Connexion</h2>
+<form id="formConnect" action="userConnect" method="post">
 
-</table>
+Identifiant : <input required="true" type="text" value="" id="login" name="login" /><!-- <p class="error"></p> -->
+<br/>
+Mot de passe : <input required="true" type="password" value="" id="mdp" name="mdp" /><!-- <p class="error"></p> -->
+<br/>
+<s:submit value="Connexion" />
 </form>
 
 </body>

@@ -26,7 +26,7 @@ public class IntervenantDAO implements IIntervenant
 
 	@Transactional
 	public List<Intervenant> findAllIntervenant() {
-		return entityManager.createQuery("FROM Intervenant").getResultList();
+		return entityManager.createQuery("FROM Intervenant", Intervenant.class).getResultList();
 	}
 	
 	// Fonction de contrôle d'un utilisateur par son id
@@ -38,7 +38,7 @@ public class IntervenantDAO implements IIntervenant
 	// // Fonction de contrôle lors de la connexion
 	@Transactional
 	public Intervenant find(String login,String pass) {
-		Query q = entityManager.createQuery("SELECT it FROM Intervenant as it WHERE it.login = :cid AND it.mdp = :cpass ");
+		Query q = entityManager.createQuery("SELECT it FROM Intervenant as it WHERE it.login = :cid AND it.mdp = :cpass ", Intervenant.class);
 		q.setParameter("cid", login);
 		q.setParameter("cpass", pass);
 		
@@ -50,7 +50,7 @@ public class IntervenantDAO implements IIntervenant
 	
 	@Transactional
 	public List<Intervention> findAllIntervention() {
-		return entityManager.createQuery("FROM Intervention").getResultList();
+		return entityManager.createQuery("FROM Intervention", Intervention.class).getResultList();
 	}
 	
 	@Transactional
@@ -98,7 +98,7 @@ public class IntervenantDAO implements IIntervenant
 	public List<Intervention> findInterventionbyStatut(int statut){
 		Query q;
 		if(statut != -1){
-			q = entityManager.createQuery("Select iterv FROM Intervention as iterv  WHERE iterv.statut = :statut");
+			q = entityManager.createQuery("SELECT iterv FROM Intervention as iterv  WHERE iterv.statut = :statut", Intervention.class);
 			q.setParameter("statut", statut);
 			return q.getResultList();
 		}
@@ -110,7 +110,7 @@ public class IntervenantDAO implements IIntervenant
 	public List<Intervention> findInterventionbySite(int site){
 		Query q;
 		if(site != -1){
-			q = entityManager.createQuery("SELECT iterv FROM Intervention as iterv  WHERE iterv.site = :site");
+			q = entityManager.createQuery("SELECT iterv FROM Intervention as iterv  WHERE iterv.site = :site", Intervention.class);
 			q.setParameter("site", site);
 			return q.getResultList();
 		}
@@ -123,7 +123,7 @@ public class IntervenantDAO implements IIntervenant
 	public List<Intervention> findInterventionbyClient(int client){
 		Query q;
 		if(client != -1){
-			q = entityManager.createQuery("SELECT iterv FROM Intervention as iterv  WHERE iterv.client = :client");
+			q = entityManager.createQuery("SELECT iterv FROM Intervention as iterv  WHERE iterv.client = :client", Intervention.class);
 			q.setParameter("client", client);
 			return q.getResultList();
 		}
@@ -135,7 +135,7 @@ public class IntervenantDAO implements IIntervenant
 	public List<Intervention> findInterventionbyDateCreation(Date dateCreation){
 		Query q;
 		if(dateCreation != null){
-			q = entityManager.createQuery("SELECT iterv FROM Intervention as iterv  WHERE iterv.dateRealisation = :dateCreation");
+			q = entityManager.createQuery("SELECT iterv FROM Intervention as iterv  WHERE iterv.dateRealisation = :dateCreation", Intervention.class);
 			q.setParameter("dateCreation", dateCreation);
 			return q.getResultList();
 		}

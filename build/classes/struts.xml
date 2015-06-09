@@ -20,51 +20,51 @@
             <result name="success" type="redirect">liste</result>
           </action>
           
-          <action name="deconnect" class="actions.AccueilAction" method="destruct">
+          <action name="deconnection" class="actions.AccueilAction" method="destruct">
           	<result name="success" type="redirect">index</result>
           </action>
           
-          <action name="connectIntervenant" class="actions.UserAction" method="connectIntervenant">
-           <result name="success" >/intervenant/list.jsp</result>
+          <action name="userConnect" class="actions.IntervenantAction" method="userConnect">
+           <result name="success">/intervenant/list.jsp</result>
             <result name="error">index.jsp</result>
          </action>
          
-           <action name="liste" class="actions.UserAction" method="ListeIntervention">
+           <action name="liste" class="actions.IntervenantAction" method="ListeIntervention">
             <result name="success">/intervenant/list.jsp</result>
             <result name="error">index.jsp</result>
           </action>
           
-         <action name="edit/*" class="actions.UserAction" method="edit">
+         <action name="edit/*" class="actions.IntervenantAction" method="edit">
     		<param name="interventionID">{1}</param>
     		<result name="error" >/intervenant/edit.jsp</result>
     		<result name="success">/intervenant/edit_intervention.jsp</result>
     	</action>
     	
     	<!-- Action de sauvegarde  -->
-    	<action name="saveIntervention" class="actions.UserAction" method="saveIntervention">
+    	<action name="saveIntervention" class="actions.IntervenantAction" method="saveIntervention">
             <result name="success" type="redirect">liste</result>
           </action>
     	
     	
-        <action name="detailmateriel/*" class="actions.LocalisationAction" method="DetailMateriel">
+        <action name="detailmateriel/*" class="actions.EmplacementAction" method="DetailMateriel">
     		<param name="materielID">{1}</param>
     		<result name="error" >/intervenant/edit.jsp</result>
     		<result name="success">/intervenant/detail_materiel.jsp</result>
     	</action>
     		
-        <action name="detailintervention/*" class="actions.UserAction" method="InterventionByID">
+        <action name="detailintervention/*" class="actions.IntervenantAction" method="InterventionByID">
     		<param name="interventionID">{1}</param>
     		<result name="success">/intervenant/detailintervention.jsp</result>
     		<result name="error" type="redirect">index</result>
     	</action>
     	
     	<!-- Action de recherche selon le choix -->
-    	 <action name="search" class="actions.UserAction" method="search">
+    	 <action name="search" class="actions.IntervenantAction" method="search">
             <result name="success">/intervenant/list.jsp</result>
           </action>
 
 
-		<action name="recherche" class="actions.UserAction" method="recherche">
+		<action name="recherche" class="actions.IntervenantAction" method="recherche">
 		<result name="success">/intervenant/listeajax.jsp</result>
 	    <result name="error" type="redirect">liste</result>
           <!--  <result name="success" type="json">

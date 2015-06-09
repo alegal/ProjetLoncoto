@@ -5,22 +5,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Edition intervention</title>
+<title>Modification d'interventions</title>
 </head>
 <body>
-<h2>Edition interventions</h2>
+<jsp:include page="/menu.html" />
+<h2>Modification de l'intervention <s:property value="%{numIntervention}"/></h2>
 
-<h2>Fiche n°  <s:property value="%{interventionID}"/></h2>
 <s:form action="saveIntervention" method="post">
 <s:hidden name="interventionID" />
-<s:textfield value="%{interventionNom}" name="interventionNom" label="Nom" />
-<s:textarea value="%{interventionCommentaire}" name="interventionCommentaire" label="Commentaire" />
-<s:textfield value="%{interventionPlanified_at}" name="interventionPlanified_at" label="Date de Planification" />
+<s:textfield value="%{numIntervention}" name="numIntervention" label="N° d'intervention " />
+<s:textarea value="%{comIntervention}" name="comIntervention" label="Commentaire " />
+<s:textfield value="%{datePlanifieeIntervention}" name="datePlanifieeIntervention" label="Date Planifiée " />
 <tr>
 	<td class="tdLabel">Statut</td>
 	<td>
-		<select name="interventionStatut">
-			<option value="1">A Faire</option>
+		<select name="statutIntervention">
+			<option value="1">A réaliser</option>
 			<option value="2">En cours</option>
 			<option value="3">Terminée</option>
 		</select>

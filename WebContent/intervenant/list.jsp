@@ -17,14 +17,14 @@
 <body>
 <jsp:include page="/menu.html" />
 <center>
-<h3>Affichage des interventions</h3>
+<h3>Liste des interventions</h3>
 
 <div class="right">
-	<s:a action="deconnect">Deconnexion</s:a>
+	<s:a action="deconnection">Deconnexion</s:a>
 </div>
 <div id="maincontent">
 
-			<s:form action="search" method="POST" enctype="multipart/form-data">
+			<%-- <s:form action="search" method="POST" enctype="multipart/form-data">
 			<table class="ui-responsive ">
                <thead>
                   <tr>
@@ -58,34 +58,34 @@
                      </tr> 
                   </tbody>
               </table>
-			</s:form>
+			</s:form> --%>
 			<div id="divaffLstintervention">
 				<s:if test="interV.size()>0">
 					<table border="1">
 						<tr>
-							<th>NOM INTERVENTION </th>
-							<th>COMMENTAIRE</th>
-							<th>STATUT</th>
-							<th>NOM CLIENT</th>
-							<th>&nbsp;</th>
-							<th>&nbsp;</th>
+							<th>N° d'intervention </th>
+							<th>N° Matériel</th>
+							<th>Commentaire</th>
+							<th>Statut</th>
+							
+							<th colspan="2">Actions</th>
 						</tr>
-					
 						<s:iterator value="interV">
 						<tr>
 							<td>
-								<s:property value="nom"/>
+								<s:property value="numIntervention"/>
+							</td>
+							<td>
+								<s:property value="materiel.numSerie"/>
 							</td>
 							<td>
 								<s:property value="commentaire" />
 							</td>
-							<s:if test="statut==1"><td bgcolor="red"><font style="color:white;font-weight:bold">A FAIRE</font></td></s:if>
+							<s:if test="statut==1"><td bgcolor="red"><font style="color:white;font-weight:bold">A réaliser</font></td></s:if>
 							<s:elseif test="statut==2"><td bgcolor="yellow">En cours</td></s:elseif>
 							<s:else><td bgcolor="green"><font style="color:white">Terminée</font></td></s:else>
-							<td>
-								<s:property value="client.id"/>-<s:property value="client.nom"/>
-							</td>
-							<td><s:a action="edit/%{id}"> édition</s:a></td>
+							
+							<td><s:a action="edit/%{id}">Modifier</s:a></td>
 							<td><s:a action="detailintervention/%{id}">Détails</s:a></td>
 						</tr>
 						
