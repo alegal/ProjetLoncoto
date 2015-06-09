@@ -19,11 +19,13 @@ public class AdminAction extends ActionSupport implements SessionAware
 	private List<Intervenant> intervenants;
 	private IIntervenant iusers;
 	private IGroupe igroup;
+	private int idIntervenant;
 	private String nomIntervenant;
 	private String prenomIntervenant;
 	private String loginIntervenant;
 	private String mdpIntervenant;
 	private String groupeIntervenant;
+	private List<Groupe> listGroupesIntervenant;
 	private List<Groupe> groupes;
 	
 	public Map<String, Object> getSession() {return session;}
@@ -50,6 +52,14 @@ public class AdminAction extends ActionSupport implements SessionAware
 
 	public void setIgroup(IGroupe igroup) {
 		this.igroup = igroup;
+	}
+
+	public int getIdIntervenant() {
+		return idIntervenant;
+	}
+
+	public void setIdIntervenant(int idIntervenant) {
+		this.idIntervenant = idIntervenant;
 	}
 
 	public String getNomIntervenant() {
@@ -91,6 +101,14 @@ public class AdminAction extends ActionSupport implements SessionAware
 	public void setGroupeIntervenant(String groupeIntervenant) {
 		this.groupeIntervenant = groupeIntervenant;
 	}
+	
+	public List<Groupe> getListGroupesIntervenant() {
+		return listGroupesIntervenant;
+	}
+
+	public void setListGroupesIntervenant(List<Groupe> listGroupesIntervenant) {
+		this.listGroupesIntervenant = listGroupesIntervenant;
+	}
 
 	public List<Groupe> getGroupes() {
 		return groupes;
@@ -109,9 +127,18 @@ public class AdminAction extends ActionSupport implements SessionAware
 		return ERROR;
 	}
 	
-	public String addIntervenant(){
+	public String editIntervenant(){
 		if(session.get("login") != null && session.get("password") != null && session.get("login") != ""  ){
-			groupes = igroup.findAllGroupe();
+			if( idIntervenant > 0){
+				Intervenant i = iusers.find(idIntervenant);
+				if( i != null){
+					nomIntervenant = i.getNom();
+					prenomIntervenant = i.getPrenom();
+					loginIntervenant = i.getLogin();
+					mdpIntervenant = i.getMdp();
+					listGroupesIntervenant = i.getGroupes();
+				}
+			}
 			return SUCCESS;
 		}
 		return ERROR;
@@ -126,7 +153,7 @@ public class AdminAction extends ActionSupport implements SessionAware
 				for (String string : tabGrp) {
 					grp.add(igroup.findById(Integer.parseInt(string.trim())));
 				}
-				Intervenant iv = new Intervenant(0, nomIntervenant, prenomIntervenant, loginIntervenant, mdpIntervenant);
+				Intervenant iv = new Intervenant(idIntervenant, nomIntervenant, prenomIntervenant, loginIntervenant, mdpIntervenant);
 				iv.setGroupes(grp);
 				iv = iusers.addIntervenant(iv);
 				return SUCCESS;

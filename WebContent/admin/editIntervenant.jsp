@@ -15,6 +15,7 @@
 
 <center>
 <s:form action="save" >
+<s:hidden name="idIntervenant" />
 <s:textfield name="nomIntervenant" label="Nom " />
 <s:textfield name="prenomIntervenant" label="Prenom "  />
 <s:textfield name="loginIntervenant" label="Login "  />

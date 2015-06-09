@@ -82,8 +82,28 @@
     		<result name="success">index.jsp</result>
     		<result name="error">/index.jsp</result>
     	</action>
-    	<action name="addIntervenant" class="actions.AdminAction" method="addIntervenant">
-    		<result name="success">edit.jsp</result>
+    	<action name="editIntervenant/*" class="actions.AdminAction" method="editIntervenant">
+    		<param name="idIntervenant">{1}</param>
+    		<result name="success">/admin/editIntervenant.jsp</result>
+    		<result name="login">/index.jsp</result>
+    	</action>
+        <action name="editClient/*" class="actions.AdminAction" method="editClient">
+       		<param name="idClient">{1}</param>
+    		<result name="error"  type="redirect">index</result>
+    		<result name="success">/admin/editClient.jsp</result>
+    		<result name="login">/index.jsp</result>
+    	</action>
+        <action name="editBatiment/*" class="actions.AdminAction" method="editBatiment">
+       		<param name="idBatiment">{1}</param>
+    		<result name="error"  type="redirect">index</result>
+    		<result name="success">/admin/editBatiment.jsp</result>
+    		<result name="login">/index.jsp</result>
+    	</action>
+        <action name="editMateriel/*" class="actions.AdminAction" method="editMateriel">
+       		<param name="idMateriel">{1}</param>
+    		<result name="error"  type="redirect">index</result>
+    		<result name="success">/admin/editMateriel.jsp</result>
+    		<result name="login">/index.jsp</result>
     	</action>
     	
     	<action name="save" class="actions.AdminAction" method="save">
