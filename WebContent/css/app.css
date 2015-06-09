@@ -33,3 +33,27 @@
   .card-action {
  	 margin-bottom:10px;
   }
+  
+  nav.primary {
+  line-height:50px;
+  height:50px !important;
+  }
+  
+  .nav-wrapper {
+    padding:0 10px !important;
+  }
+  
+  #nav-mobile i {
+  line-height:50px !important;
+  height:50px !important;
+  }
+  
+ .subnav {
+  line-height:30px !important;
+  height:30px !important;
+  }
+  
+  nav.subnav .nav-wrapper {
+    padding:0 10px !important;
+  }
+  
