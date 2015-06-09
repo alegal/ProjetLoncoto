@@ -7,24 +7,28 @@
 <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 <link type="text/css" rel="stylesheet" href="css/app.css"  media="screen,projection"/>
 <h:head>
-<title>Liste des Materiels</title>
+<title>Liste des Sous Famille</title>
 </h:head>
 <h:body>
 
-<h2>FAMILLE</h2>
+<h2>SOUS FAMILLE</h2>
 
 <h:form>
 
 	<table border="1" >
-		<tr><th>id</th><th>titre</th><th></th></tr>
-		<ui:repeat var="fam"  value="#{listeBean.famille}">
+		<tr><th>id</th><th>titre</th><th>famille ID</th><th>Famille</th></tr>
+		<ui:repeat var="sfam"  value="#{listeBean.sousFamille}">
 		<tr>
-			<td>#{fam.id}</td>
-			<td>#{fam.libelle}</td>
+			<td>#{sfam.id}</td>
+			<td>#{sfam.libelle}</td>
+			<td>#{sfam.famille.id}</td>
 			<td>
-			 <h:commandButton value="editer" action="#{listeBean.recupSousFamille}">
-				<f:param name="fid" value="#{fam.id}" />
-			</h:commandButton> 
+			    #{sfam.famille.libelle}
+			</td>
+			<td>
+			 <h:commandButton value="voir" action="#{listeBean.recupArticle}">
+				<f:param name="sfid" value="#{sfam.id}" />
+			 </h:commandButton> 
 			</td>
 		</tr>
 		</ui:repeat>

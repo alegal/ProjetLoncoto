@@ -45,6 +45,8 @@
 	<property name="entityManagerFactory" ref="entityManagerFactory" />
 </bean>
 
+<bean id="familleDAO" class="utils.DAOFiltreArticle" />
+
 <!-- <bean id="contentDAO" class="utils.ContentDAO" />
 <bean id="imageDAO" class="utils.ImageDAO" />
 <bean id="tagDAO" class="utils.TagDAO" />

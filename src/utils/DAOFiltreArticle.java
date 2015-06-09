@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,13 +35,21 @@ public class DAOFiltreArticle implements IFamille {
 	@Transactional
 	public List<SousFamille> findBySousFamille(int idFamille) {
 		
-		return null;
+		Query q = em.createQuery("SELECT sf from SousFamille as sf WHERE famille_id = :idFamille", SousFamille.class);
+		
+		q.setParameter("idFamille", idFamille);
+		
+		return q.getResultList();
 	}
 
 	@Transactional
 	public List<Article> findByArticle(int idSousFamille) {
 		
-		return null;
+		Query q = em.createQuery("SELECT art from Article as art WHERE sousfamille_id = :idSousFamille", Article.class);
+		
+		q.setParameter("idSousFamille", idSousFamille);
+		
+		return q.getResultList();
 	}
 
 	@Transactional

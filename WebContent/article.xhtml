@@ -7,24 +7,27 @@
 <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 <link type="text/css" rel="stylesheet" href="css/app.css"  media="screen,projection"/>
 <h:head>
-<title>Liste des Materiels</title>
+<title>Liste des articles</title>
 </h:head>
 <h:body>
 
-<h2>FAMILLE</h2>
+<h2>ARTICLE</h2>
 
 <h:form>
 
 	<table border="1" >
-		<tr><th>id</th><th>titre</th><th></th></tr>
-		<ui:repeat var="fam"  value="#{listeBean.famille}">
+		<tr><th>id</th><th>nom</th><th>description</th><th>Famille</th><th>Sous Famille</th></tr>
+		<ui:repeat var="art"  value="#{listeBean.article}">
 		<tr>
-			<td>#{fam.id}</td>
-			<td>#{fam.libelle}</td>
+			<td>#{art.id}</td>
+			<td>#{art.nom}</td>
+			<td>#{art.description}</td>
+			<td>#{art.sousfamille.famille.libelle}</td>
+			<td>#{art.sousfamille.libelle}</td>
 			<td>
-			 <h:commandButton value="editer" action="#{listeBean.recupSousFamille}">
-				<f:param name="fid" value="#{fam.id}" />
-			</h:commandButton> 
+			 <h:commandButton value="voir" action="#{listeBean.recupArticle}">
+				<f:param name="artid" value="#{art.id}" />
+			 </h:commandButton> 
 			</td>
 		</tr>
 		</ui:repeat>
