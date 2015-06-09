@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+<link type="text/css" rel="stylesheet" href="css/app.css"  media="screen,projection"/>
+<h:head>
+<title>Liste des Sous Famille</title>
+</h:head>
+<h:body>
+
+<h2>SOUS FAMILLE</h2>
+
+<h:form>
+
+	<table border="1" >
+		<tr><th>id</th><th>titre</th><th>famille ID</th><th>Famille</th></tr>
+		<ui:repeat var="sfam"  value="#{listeBean.sousFamille}">
+		<tr>
+			<td>#{sfam.id}</td>
+			<td>#{sfam.libelle}</td>
+			<td>#{sfam.famille.id}</td>
+			<td>
+			    #{sfam.famille.libelle}
+			</td>
+			<td>
+			 <h:commandButton value="voir" action="#{listeBean.recupArticle}">
+				<f:param name="sfid" value="#{sfam.id}" />
+			 </h:commandButton> 
+			</td>
+		</tr>
+		</ui:repeat>
+	</table>
+
+ <!-- <h:commandButton value="creer image" action="#{editBean.createImage}"/>
+  <h:commandButton value="creer document" action="#{editBean.createDocument}" /> -->
+</h:form>	
+ 
+ 
+ <!--Import jQuery before materialize.js-->
+ <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+ <script type="text/javascript" src="js/materialize.min.js"></script>
+</h:body>
+
+</html>

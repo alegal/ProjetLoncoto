@@ -37,6 +37,16 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 </bean>
 
+<<<<<<< HEAD
+<bean id="familleDAO" class="utils.DAOFiltreArticle" />
+
+<!-- <bean id="contentDAO" class="utils.ContentDAO" />
+<bean id="imageDAO" class="utils.ImageDAO" />
+<bean id="tagDAO" class="utils.TagDAO" />
+<bean id="documentDAO" class="utils.DocumentDAO" />
+<bean id="auteurDAO" class="utils.AuteurDAO" /> -->
+=======
+>>>>>>> de80b184bb9414ed89a2fd036a077765e2e69253
 
 <bean id="iusers"  class="utils.IntervenantDAO" />
 <bean id="igroup"  class="utils.GroupeDAO" />
