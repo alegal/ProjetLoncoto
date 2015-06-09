@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+ 	<constant name="struts.enable.SlashesInActionNames" value="true" />
+ 
+
+    
+    <package name="index" namespace="/" extends="json-default" >
+    	
+    	<default-action-ref name="index" />
+    	
+    	 <action name="index" class="actions.AccueilAction" method="index">
+            <result name="error">index.jsp</result>
+            <result name="success" type="redirect">liste</result>
+          </action>
+          
+          <action name="deconnect" class="actions.AccueilAction" method="destruct">
+          	<result name="success" type="redirect">index</result>
+          </action>
+          
+          <action name="connectIntervenant" class="actions.UserAction" method="connectIntervenant">
+           <result name="success" >/intervenant/list.jsp</result>
+            <result name="error">index.jsp</result>
+         </action>
+         
+           <action name="liste" class="actions.UserAction" method="ListeIntervention">
+            <result name="success">/intervenant/list.jsp</result>
+            <result name="error">index.jsp</result>
+          </action>
+          
+         <action name="edit/*" class="actions.UserAction" method="edit">
+    		<param name="interventionID">{1}</param>
+    		<result name="error" >/intervenant/edit.jsp</result>
+    		<result name="success">/intervenant/edit_intervention.jsp</result>
+    	</action>
+    	
+    	<!-- Action de sauvegarde  -->
+    	<action name="saveIntervention" class="actions.UserAction" method="saveIntervention">
+            <result name="success" type="redirect">liste</result>
+          </action>
+    	
+    	
+        <action name="detailmateriel/*" class="actions.LocalisationAction" method="DetailMateriel">
+    		<param name="materielID">{1}</param>
+    		<result name="error" >/intervenant/edit.jsp</result>
+    		<result name="success">/intervenant/detail_materiel.jsp</result>
+    	</action>
+    		
+        <action name="detailintervention/*" class="actions.UserAction" method="InterventionByID">
+    		<param name="interventionID">{1}</param>
+    		<result name="success">/intervenant/detailintervention.jsp</result>
+    		<result name="error" type="redirect">index</result>
+    	</action>
+    	
+    	<!-- Action de recherche selon le choix -->
+    	 <action name="search" class="actions.UserAction" method="search">
+            <result name="success">/intervenant/list.jsp</result>
+          </action>
+
+
+		<action name="recherche" class="actions.UserAction" method="recherche">
+		<result name="success">/intervenant/listeajax.jsp</result>
+	    <result name="error" type="redirect">liste</result>
+          <!--  <result name="success" type="json">
+	           <param name="includeProperties">
+	            	^message$
+	           	</param>
+            </result>-->
+         </action>
+    	
+    </package>
+
+    <package name="admin" namespace="/admin" extends="struts-default">
+    	<default-action-ref name="index" />
+    	<action name="index" class="actions.AdminAction" method="index">
+    		<result name="success">index.jsp</result>
+    		<result name="error">/index.jsp</result>
+    	</action>
+    	<action name="addIntervenant" class="actions.AdminAction" method="addIntervenant">
+    		<result name="success">edit.jsp</result>
+    	</action>
+    	
+    	<action name="save" class="actions.AdminAction" method="save">
+    		<result name="success" type="redirect">index</result>
+    		<result name="input">edit.jsp</result>
+    		<result name="error">edit.jsp</result>
+    	</action>
+    </package>
+    
+
+    <!-- Add packages here -->
+
+</struts>
