@@ -20,7 +20,7 @@ public class AdminAction extends ActionSupport implements SessionAware
 	private IIntervenant iusers;
 	private IGroupe igroup;
 	private String nomIntervenant;
-	private String emailIntervenant;
+	private String prenomIntervenant;
 	private String loginIntervenant;
 	private String mdpIntervenant;
 	private String groupeIntervenant;
@@ -60,12 +60,12 @@ public class AdminAction extends ActionSupport implements SessionAware
 		this.nomIntervenant = nomIntervenant;
 	}
 
-	public String getEmailIntervenant() {
-		return emailIntervenant;
+	public String getPrenomIntervenant() {
+		return prenomIntervenant;
 	}
 
-	public void setEmailIntervenant(String emailIntervenant) {
-		this.emailIntervenant = emailIntervenant;
+	public void setPrenomIntervenant(String prenomIntervenant) {
+		this.prenomIntervenant = prenomIntervenant;
 	}
 
 	public String getLoginIntervenant() {
@@ -120,13 +120,13 @@ public class AdminAction extends ActionSupport implements SessionAware
 	public String save(){
 		if(session.get("login") != null && session.get("password") != null && session.get("login") != ""  ){
 			groupes = igroup.findAllGroupe();
-			if(!nomIntervenant.trim().isEmpty() && !emailIntervenant.trim().isEmpty() && !loginIntervenant.trim().isEmpty() && !mdpIntervenant.trim().isEmpty() && !groupeIntervenant.equals("")){
+			if(!nomIntervenant.trim().isEmpty() && !prenomIntervenant.trim().isEmpty() && !loginIntervenant.trim().isEmpty() && !mdpIntervenant.trim().isEmpty() && !groupeIntervenant.equals("")){
 				List<Groupe> grp = new ArrayList<Groupe>();
-				String[] tabGrp =groupeIntervenant.split(",");
+				String[] tabGrp = groupeIntervenant.split(",");
 				for (String string : tabGrp) {
 					grp.add(igroup.findById(Integer.parseInt(string.trim())));
 				}
-				Intervenant iv = new Intervenant(0, nomIntervenant, emailIntervenant, loginIntervenant, mdpIntervenant);
+				Intervenant iv = new Intervenant(0, nomIntervenant, prenomIntervenant, loginIntervenant, mdpIntervenant);
 				iv.setGroupes(grp);
 				iv = iusers.addIntervenant(iv);
 				return SUCCESS;

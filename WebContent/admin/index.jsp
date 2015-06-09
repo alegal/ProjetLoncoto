@@ -10,17 +10,18 @@
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script>
-$(function() {
+/* $(function() {
     $( "#accordion" ).accordion({
       heightStyle: "content"
     });
-  });
+  }); */
 </script>
 </head>
 <body>
 <jsp:include page="/menu.html"   />
-<h2>Admin</h2>
+<h2>Bienvenue <s:property value="session.login"/> du côté de l'administration</h2>
 <div id="accordion" >
+<%-- <s:a action="addIntervention" style="color:blue !important;">Ajouter une intervention</s:a><br><br> --%>
 <h3>Liste des intervenants</h3>
   <div>
   	<s:a action="addIntervenant" style="color:blue !important;">Ajouter un intervenant</s:a><br><br>
@@ -33,10 +34,10 @@ $(function() {
   		</tr>
     <s:iterator value="intervenants">
 	<tr>
-		<td><s:a action="edit/intervenant-%{id}"><s:property value="nom"/></s:a></td>
+		<td><s:property value="nom"/></td>
 		<td><s:property value="prenom"/></td>
 		<td><s:property value="login"/></td>
-		<td>ACTIONS</td>
+		<td><s:a action="edit/intervenant/%{id}">Modifier</s:a></td>
 	</tr>
 	</s:iterator>
   	</table>
@@ -45,6 +46,7 @@ $(function() {
   <div>
     <s:iterator value="interV">
 	<tr>
+	<td><s:property value="numSerie"/></td>
 	<td><s:a action="edit/materiel%{id}"><s:property value="materiel"/></s:a></td>
 	</tr>
 	</s:iterator>

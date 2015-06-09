@@ -15,16 +15,16 @@
 
 <center>
 <s:form action="save" >
-<s:textfield name="nomIntervenant" label="Nom" />
-<s:textfield name="prenomIntervenant" label="Prenom"  />
-<s:textfield name="loginIntervenant" label="Login"  />
-<s:textfield name="passIntervenant" label="Mot de passe"  />
+<s:textfield name="nomIntervenant" label="Nom " />
+<s:textfield name="prenomIntervenant" label="Prenom "  />
+<s:textfield name="loginIntervenant" label="Login "  />
+<s:textfield name="mdpIntervenant" label="Mot de passe "  />
 <tr>
 	<td class="tdLabel">Groupe</td>
 	<td>
 		<select name="groupeIntervenant" multiple="multiple" >
 			<s:iterator value="groupes">
-				<option value="${id}"><s:property value="status"/></option>
+				<option value="${id}"><s:property value="libelle"/></option>
 			</s:iterator>
 		</select>
 	</td>

@@ -182,7 +182,7 @@ public class IntervenantAction extends ActionSupport implements SessionAware
 	
 	
 	// Accès à l'édition des interventions
-	public String edit(){
+	public String editIntervention(){
 		if(session.get("login") != null && session.get("password") != null && session.get("login") != ""  ){
 			//System.out.println("nb" + interventionID);
 			if(interventionID != 0){

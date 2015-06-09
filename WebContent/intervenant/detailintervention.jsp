@@ -8,6 +8,7 @@
 <title>Détails des interventions</title>
 </head>
 <body>
+<jsp:include page="/menu.html" />
 <h2>Détails de l'intervention <s:property value="%{numIntervention}"/></h2>
 
 <table>

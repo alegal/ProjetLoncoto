@@ -17,8 +17,8 @@
 <body>
 <jsp:include page="/menu.html" />
 <center>
+<h2>Bienvenue <s:property value="session.login"/></h2>
 <h3>Liste des interventions</h3>
-
 <div class="right">
 	<s:a action="deconnection">Deconnexion</s:a>
 </div>
@@ -67,7 +67,6 @@
 							<th>N° Matériel</th>
 							<th>Commentaire</th>
 							<th>Statut</th>
-							
 							<th colspan="2">Actions</th>
 						</tr>
 						<s:iterator value="interV">
@@ -85,7 +84,7 @@
 							<s:elseif test="statut==2"><td bgcolor="yellow">En cours</td></s:elseif>
 							<s:else><td bgcolor="green"><font style="color:white">Terminée</font></td></s:else>
 							
-							<td><s:a action="edit/%{id}">Modifier</s:a></td>
+							<td><s:a action="editIntervention/%{id}">Modifier</s:a></td>
 							<td><s:a action="detailintervention/%{id}">Détails</s:a></td>
 						</tr>
 						
