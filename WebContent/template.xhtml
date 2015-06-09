@@ -10,29 +10,46 @@
 <title>Menu</title>
 </h:head>
 <h:body>
-
-
-	
-  <nav class="blue lighten-1 primary">
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Loncoto</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Louis BRETONNIERE<i class="mdi-navigation-arrow-drop-down right"></i></a><ul id="dropdown1" class="dropdown-content">
-	  <li><a href="#!">one</a></li>
-	  <li><a href="#!">two</a></li>
-	  <li class="divider"></li>
-	  <li><a href="#!">three</a></li>
-	</ul></li>
-        <li><a href="">Logout</a></li>
-      </ul>
-    </div>
-  </nav>
-  	<ul id="dropdown1" class="dropdown-content">
+<!-- DROPDOWN MENU -->
+  	<ul id="menu-dropdown" class="dropdown-content">
 	  <li><a href="#!">one</a></li>
 	  <li><a href="#!">two</a></li>
 	  <li class="divider"></li>
 	  <li><a href="#!">three</a></li>
 	</ul>
+<!-- PRIMARY NAV -->
+  <nav class="blue lighten-1 primary">
+  
+    <div class="nav-wrapper">
+      <!-- NOM -->
+      <a href="#" class="brand-logo">Loncoto</a>
+      
+      <!-- BTN MOBILE -->
+      <a href="#" data-activates="main-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+      <a href="#" data-activates="second-mobile" class="right button-collapse-second"><i class="mdi-action-settings"></i></a>
+      
+      <!-- NAV -->
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+		 <li><a ID="#tesbtn" class="dropdown-button" href="#!" data-activates="menu-dropdown">Louis BRETONNIERE<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+        <li><a href="">Logout</a></li>
+      </ul>
+      
+      <!-- SIDENAV PRIMARY -->
+     <ul class="side-nav" id="main-mobile">
+		<li><a href="">Mon Profile</a></li>
+        <li><a href="">Logout</a></li>
+      </ul>
+      
+      <!-- SIDENAV SECOND -->
+      <ul class="side-nav" id="second-mobile">
+		<li><a href="">Add</a></li>
+        <li><a href="">Edit</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  
+  <!-- SUBNAV -->
   <nav class="grey darken-4 subnav">
     <div class="nav-wrapper">
 
@@ -45,26 +62,27 @@
   
 
 
-  
- <main>
+  <!-- START CONTENT -->
+<main>
 <div class="content">
     <div class="row">
-
+    
+    
+  	  <!-- SIDEBAR -->
       <div class="col s12 m4 l3">
-		  	<div class="row">
-		          <div class="card">
-		          <div class="card-content">
+	  	<div class="row">
+			<div class="card">
+		    	<div class="card-content">
 		           FILTRES
-		           <div class="row">
-		            </div>
-		          </div>
-		        </div>
-		      </div>
-		      
-      </div>
+		        <div class="row">
+		     </div>
+		</div>
+	  </div>
+	</div>
+	</div>
       
-
-      <div class="col s12 m8 l9">
+		 <!-- CONTENT -->
+      <div class="col m12">
 		
       <table class="striped responsive-table">
         <thead>
@@ -98,8 +116,8 @@
 
     </div>
        
-</div>
 
+      </div>
 </main>
 
 
@@ -117,15 +135,9 @@
 
  
       <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
-            <script>
-      
-      $(document).ready(function() {
-    	    $('select').material_select();
-    	    $(".button-collapse").sideNav();
-    	  });
-      </script>
+		<script type="text/javascript" src="js/app.js"></script>
 </h:body>
 
 </html>
