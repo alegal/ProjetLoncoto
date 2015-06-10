@@ -4,17 +4,10 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<base href="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/"/>
-
-<link rel="stylesheet" type="text/css" href="css/list.css"/>
-<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
-<script type="text/javascript" src="js/list.js"></script>
-<title>Detail matériel</title>
-</head>
+<jsp:include page="../layouts/header.xhtml" />
+<jsp:include page="../layouts/nav.xhtml" />
 <body>
-<jsp:include page="/menu.html" />
+
 <h3>Détail du matériel</h3>
 <div id="maincontent">
 
@@ -54,5 +47,4 @@
 					</table>
 			</div>
 </div>
-</body>
-</html>
+<jsp:include page="../layouts/footer.xhtml" />

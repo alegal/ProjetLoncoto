@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+<link type="text/css" rel="stylesheet" href="css/app.css"  media="screen,projection"/>
+<h:head>
+<title>Menu</title>
+</h:head>
+<h:body>
+<!-- DROPDOWN MENU -->
+  	<ul id="menu-dropdown" class="dropdown-content">
+	  <li><a href="#!">one</a></li>
+	  <li><a href="#!">two</a></li>
+	  <li class="divider"></li>
+	  <li><a href="#!">three</a></li>
+	</ul>
+<!-- PRIMARY NAV -->
+  <nav class="blue lighten-1 primary">
+  
+    <div class="nav-wrapper">
+      <!-- NOM -->
+      <a href="#" class="brand-logo">Loncoto</a>
+      
+      <!-- BTN MOBILE -->
+      <a href="#" data-activates="main-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+      <a href="#" data-activates="second-mobile" class="right button-collapse-second"><i class="mdi-action-settings"></i></a>
+      
+      <!-- NAV -->
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+     <li><a href="/ProjetLoncoto/index">Accueil</a></li>
+     <li><a href="/ProjetLoncoto/liste">Liste des interventions</a></li>
+         <li><a href="admin">Administration</a></li>
+         <li><a href="deconnection">Deconnexion</a></li>
+      </ul>
+      
+      <!-- SIDENAV PRIMARY -->
+     <ul class="side-nav" id="main-mobile">
+     <li><a href="/ProjetLoncoto/index">Accueil</a></li>
+     <li><a href="/ProjetLoncoto/liste">Liste des interventions</a></li>
+         <li><a href="admin">Administration</a></li>
+         <li><a href="deconnection">Deconnexion</a></li>
+      </ul>
+      
+      <!-- SIDENAV SECOND -->
+
+      <ul class="side-nav" id="second-mobile">
+		<li><a href="">Intervention</a></li>
+        <li><a href="">Matériel</a></li>
+        <li><a href="">Article</a></li>
+        <li><a href="">Sous-Famille</a></li>
+        <li><a href="">Famille</a></li>
+        <li><a href="">Salle</a></li>
+        <li><a href="">Etage</a></li>
+        <li><a href="">Batiment</a></li>
+        <li><a href="">Site</a></li>
+        <li><a href="">Client</a></li>
+        <li><a href="">Intervenant</a></li>
+        <li><a href="">Groupe</a></li>
+      </ul>
+
+      
+      
+    </div>
+  </nav>
+
+  
+  <!-- SUBNAV -->
+
+  <nav class="grey darken-4 subnav">
+    <div class="nav-wrapper">
+
+      <ul id="nav-mobile" class=" hide-on-med-and-down">
+		<li><a href="">Intervention</a></li>
+        <li><a href="">Matériel</a></li>
+        <li><a href="">Article</a></li>
+        <li><a href="">Sous-Famille</a></li>
+        <li><a href="">Famille</a></li>
+        <li><a href="">Salle</a></li>
+        <li><a href="">Etage</a></li>
+        <li><a href="">Batiment</a></li>
+        <li><a href="">Site</a></li>
+        <li><a href="">Client</a></li>
+        <li><a href="">Intervenant</a></li>
+        <li><a href="">Groupe</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+  <!-- START CONTENT -->
+<main>
+<div class="content">
+    <div class="row">
+    
+
+
+
+
+
+
+
+
+
+<div id="contenu">
+
+
+<div id="test1" class="col s12">
+<div class="row">
+	<div class="col s12 m12">
+		<h5>TEST CAT</h5>
+	</div>
+</div>
+  	  <!-- SIDEBAR -->
+      <div class="col s12 m4">
+	  	<div class="row">
+			<div class="card">
+		    	<div class="card-content">
+		          <div class="input-field col s12 m12"> FILTRES </div>
+
+			        <div class="input-field col s6 m12">
+			          <input id="icon_prefix" type="text" class="validate" />
+			          <label for="icon_prefix">First Name</label>
+			        </div>
+
+
+			        <div class="input-field col s6 m12">
+			          <input id="icon_prefix" type="text" class="validate" />
+			          <label for="icon_prefix">First Name</label>
+			        </div>
+	
+
+			        <div class="input-field col s6 m12">
+			          <input id="icon_prefix" type="text" class="validate" />
+			          <label for="icon_prefix">First Name</label>
+			        </div>
+
+		     	
+
+			        <div class="input-field col s6 m12">
+			          <input id="icon_prefix" type="text" class="validate" />
+			          <label for="icon_prefix">First Name</label>
+			        </div>
+
+		     		<div class="row">
+		     	  <button class="btn waves-effect waves-light green lighter-2 col s12 m12" type="submit" name="action">Submit
+				    <i class="mdi-content-send right"></i>
+				  </button>
+				  </div>
+		</div>
+	  </div>
+	</div>
+	</div>
+    
+		 <!-- CONTENT -->
+      <div class="col m8">
+		
+      <table class="striped responsive-table">
+        <thead>
+          <tr>
+              <th data-field="id">Name</th>
+              <th data-field="name">Item Name</th>
+              <th data-field="price">Item Price</th>
+              <th data-field="price">Acion</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Alvin</td>
+            <td>Eclair</td>
+            <td>$0.87</td>
+            <td>
+            
+            	<a class="waves-effect waves-light btn blue lighten-1"><i class=" mdi-action-description"></i></a>
+            	<a class="waves-effect waves-light btn red darken-2"><i class=" mdi-action-delete"></i></a>
+            </td>
+          </tr>
+          <tr>
+            <td>Alan</td>
+            <td>Jellybean</td>
+            <td>$3.76</td>
+                        <td>
+            
+            	<a class="waves-effect waves-light btn blue lighten-1"><i class=" mdi-action-description"></i></a>
+            	<a class="waves-effect waves-light btn red darken-2"><i class=" mdi-action-delete"></i></a>
+            </td>
+          </tr>
+          <tr>
+            <td>Jonathan</td>
+            <td>Lollipop</td>
+            <td>$7.00</td>
+                        <td>
+            
+            	<a class="waves-effect waves-light btn blue lighten-1"><i class=" mdi-action-description"></i></a>
+            	<a class="waves-effect waves-light btn red darken-2"><i class=" mdi-action-delete"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+             <ul class="pagination">
+    <li class="disabled"><a href="#!"><i class="mdi-navigation-chevron-left"></i></a></li>
+    <li class="active"><a href="#!">1</a></li>
+    <li class="waves-effect"><a href="#!">2</a></li>
+    <li class="waves-effect"><a href="#!">3</a></li>
+    <li class="waves-effect"><a href="#!">4</a></li>
+    <li class="waves-effect"><a href="#!">5</a></li>
+    <li class="waves-effect"><a href="#!"><i class="mdi-navigation-chevron-right"></i></a></li>
+  </ul> 
+      </div>
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+    </div>
+       
+
+      </div>
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+</h:body>
+
+</html>

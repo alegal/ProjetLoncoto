@@ -70,6 +70,7 @@ public class AdminAction extends ActionSupport implements SessionAware
 	private String nomClient;
 	private String emailClient;
 	private String materielsClient;
+	private String sitesClient;
 	private List<Site> listSitesClient;
 	private List<Materiel> listMaterielsClient;
 	private int idSite;
@@ -311,6 +312,14 @@ public class AdminAction extends ActionSupport implements SessionAware
 		this.materielsClient = materielsClient;
 	}
 
+	public String getSitesClient() {
+		return sitesClient;
+	}
+
+	public void setSitesClient(String sitesClient) {
+		this.sitesClient = sitesClient;
+	}
+
 	public List<Site> getListSitesClient() {
 		return listSitesClient;
 	}
@@ -467,7 +476,6 @@ public class AdminAction extends ActionSupport implements SessionAware
 				if( c != null){
 					nomClient = c.getNom();
 					emailClient = c.getEmail();
-					listMaterielsClient = new ArrayList(c.getMateriels());
 					listSitesClient = new ArrayList (c.getSites());
 				}
 			}
@@ -479,21 +487,26 @@ public class AdminAction extends ActionSupport implements SessionAware
 	public String saveClient(){
 		if(session.get("login") != null && session.get("password") != null && session.get("login") != ""  )
 		{
-			if(!nomClient.trim().isEmpty() && !emailClient.trim().isEmpty() && (materielsClient != null && !materielsClient.equals(""))){
+			if(!nomClient.trim().isEmpty() && !emailClient.trim().isEmpty()){
 				Client c = new Client(idClient, nomClient, emailClient);
 				Set<Materiel> listChoixMateriels = new HashSet<Materiel>();
-				String[] tabMateriel = materielsClient.split(",");
-				for (String string : tabMateriel) {
-					Materiel m1 = iemplacementMateriel.findMaterielById(Integer.parseInt(string.trim()));
-					listChoixMateriels.add(m1);
-				}
-				c.setMateriels(listChoixMateriels);
-				
+//				if(materielsClient != null)
+//				{
+					String[] tabMateriel = materielsClient.split(",");
+					for (String string : tabMateriel) {
+						Materiel m1 = iemplacementMateriel.findMaterielById(Integer.parseInt(string.trim()));
+						listChoixMateriels.add(m1);
+					}
+					c.setMateriels(listChoixMateriels);
+//				}
 				Set<Site> listChoixSites = new HashSet<Site>();
-				for (Materiel m : listChoixMateriels) {
-					listChoixSites.add(iemplacementMateriel.findSiteById( m.getSalle().getEtage().getBatiment().getSite().getId()));					
-				}			
-				c.setSites(listChoixSites);
+//				if(sitesClient != null)
+//				{
+					for (Materiel m : listChoixMateriels) {
+						listChoixSites.add(iemplacementMateriel.findSiteById( m.getSalle().getEtage().getBatiment().getSite().getId()));					
+					}			
+					c.setSites(listChoixSites);
+//				}
 				c = iclient.editClient(c);
 				return SUCCESS;
 			}

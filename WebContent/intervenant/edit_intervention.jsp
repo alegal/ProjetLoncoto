@@ -2,13 +2,10 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Modification d'interventions</title>
-</head>
+<jsp:include page="../layouts/header.xhtml" />
+<jsp:include page="../layouts/nav.xhtml" />
 <body>
-<jsp:include page="/menu.html" />
+
 <h2>Modification de l'intervention <s:property value="%{numIntervention}"/></h2>
 
 <s:form action="saveIntervention" method="post">
@@ -30,7 +27,4 @@
 </s:form>
 
 
-
-
-</body>
-</html>
+<jsp:include page="../layouts/footer.xhtml" />
