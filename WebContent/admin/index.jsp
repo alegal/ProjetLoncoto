@@ -181,7 +181,54 @@
 		</s:iterator>
  	</table>
 </div>
-
+<h3>Liste des étages</h3>
+<div>
+ 	<s:a action="editEtage" style="color:blue !important;">Ajouter un étage</s:a><br><br>
+ 	<table border="2px">
+ 		<tr>
+ 			<th>N° d'étage</th>
+ 			<th>Bâtiment</th>
+ 			<th colspan="2">Actions</th>
+ 		</tr>
+	   	<s:iterator value="etages">
+			<tr>
+				<td><s:property value="numEtage"/></td>
+				<td><s:property value="batiment.numBat"/></td>
+				<td><s:a action="editEtage/%{id}">Modifier</s:a></td>
+				<td>
+					<form action="deleteEtage" method="post">
+						<s:hidden name="idEtage" value="%{id}" />
+						<input type="submit" value="Supprimer" />
+					</form>
+				</td>
+			</tr>
+		</s:iterator>
+ 	</table>
+</div>
+<h3>Liste des salles</h3>
+<div>
+ 	<s:a action="editSalle" style="color:blue !important;">Ajouter une salle</s:a><br><br>
+ 	<table border="2px">
+ 		<tr>
+ 			<th>N° de salle</th>
+ 			<th>Etage</th>
+ 			<th colspan="2">Actions</th>
+ 		</tr>
+	   	<s:iterator value="salles">
+			<tr>
+				<td><s:property value="numSalle"/></td>
+				<td><s:property value="etage.numEtage"/></td>
+				<td><s:a action="editSalle/%{id}">Modifier</s:a></td>
+				<td>
+					<form action="deleteSalle" method="post">
+						<s:hidden name="idSalle" value="%{id}" />
+						<input type="submit" value="Supprimer" />
+					</form>
+				</td>
+			</tr>
+		</s:iterator>
+ 	</table>
+</div>
 </div>
 </body>
 </html>

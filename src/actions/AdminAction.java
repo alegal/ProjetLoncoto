@@ -10,6 +10,8 @@ import java.util.Map;
 
 
 
+
+
 import org.apache.struts2.interceptor.SessionAware;
 
 import utils.IClient;
@@ -19,9 +21,11 @@ import utils.IIntervenant;
 import beans.Article;
 import beans.Batiment;
 import beans.Client;
+import beans.Etage;
 import beans.Groupe;
 import beans.Intervenant;
 import beans.Materiel;
+import beans.Salle;
 import beans.Site;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -36,6 +40,8 @@ public class AdminAction extends ActionSupport implements SessionAware
 	private List<Article> articles;
 	private List<Batiment> batiments;
 	private List<Groupe> groupes;
+	private List<Etage> etages;
+	private List<Salle> salles;
 	private IIntervenant iusers;
 	private IGroupe igroup;
 	private IEmplacementMateriel iemplacementMateriel;
@@ -107,6 +113,22 @@ public class AdminAction extends ActionSupport implements SessionAware
 		this.groupes = groupes;
 	}
 	
+	public List<Etage> getEtages() {
+		return iemplacementMateriel.findAllEtage();
+	}
+
+	public void setEtages(List<Etage> etages) {
+		this.etages = etages;
+	}
+
+	public List<Salle> getSalles() {
+		return iemplacementMateriel.findAllSalle();
+	}
+
+	public void setSalles(List<Salle> salles) {
+		this.salles = salles;
+	}
+
 	public IIntervenant getIusers() {
 		return iusers;
 	}
