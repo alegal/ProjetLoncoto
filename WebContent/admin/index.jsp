@@ -3,7 +3,7 @@
 <%@ taglib uri="/struts-tags" prefix="s" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<jsp:include page="../layouts/header.xhtml" />
+<jsp:include page="../layouts/header-sub.xhtml" />
 <jsp:include page="../layouts/nav.xhtml" />
 <body>
 <h2>Bienvenue <s:property value="session.login"/> du côté de l'administration</h2>
