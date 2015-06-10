@@ -1,6 +1,8 @@
 package actions;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +14,10 @@ import java.util.Map;
 
 
 
+
+
+
+import java.util.Set;
 
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -60,6 +66,12 @@ public class AdminAction extends ActionSupport implements SessionAware
 	private int idGroupe;
 	private String libelleGroupe;
 	private List<Intervenant> listIntervenantsGroupe;
+	private int idClient;
+	private String nomClient;
+	private String emailClient;
+	private String materielsClient;
+	private List<Site> listSitesClient;
+	private List<Materiel> listMaterielsClient;
 	private int idSite;
 	private String numSite;
 	private List<Client> listClientsSite;
@@ -267,6 +279,54 @@ public class AdminAction extends ActionSupport implements SessionAware
 		this.listIntervenantsGroupe = listIntervenantsGroupe;
 	}
 
+	public int getIdClient() {
+		return idClient;
+	}
+
+	public void setIdClient(int idClient) {
+		this.idClient = idClient;
+	}
+
+	public String getNomClient() {
+		return nomClient;
+	}
+
+	public void setNomClient(String nomClient) {
+		this.nomClient = nomClient;
+	}
+
+	public String getEmailClient() {
+		return emailClient;
+	}
+
+	public void setEmailClient(String emailClient) {
+		this.emailClient = emailClient;
+	}
+
+	public String getMaterielsClient() {
+		return materielsClient;
+	}
+
+	public void setMaterielsClient(String materielsClient) {
+		this.materielsClient = materielsClient;
+	}
+
+	public List<Site> getListSitesClient() {
+		return listSitesClient;
+	}
+
+	public void setListSitesClient(List<Site> listSitesClient) {
+		this.listSitesClient = listSitesClient;
+	}
+
+	public List<Materiel> getListMaterielsClient() {
+		return listMaterielsClient;
+	}
+
+	public void setListMaterielsClient(List<Materiel> listMaterielsClient) {
+		this.listMaterielsClient = listMaterielsClient;
+	}
+
 	public int getIdSite() {
 		return idSite;
 	}
@@ -396,6 +456,48 @@ public class AdminAction extends ActionSupport implements SessionAware
 				igroup.deleteGroupe(g);
 			}
 			return SUCCESS;
+		}
+		return LOGIN;
+	}
+	
+	public String editClient(){
+		if(session.get("login") != null && session.get("password") != null && session.get("login") != ""  ){
+			if( idClient > 0){
+				Client c = iclient.findById(idClient);
+				if( c != null){
+					nomClient = c.getNom();
+					emailClient = c.getEmail();
+					listMaterielsClient = new ArrayList(c.getMateriels());
+					listSitesClient = new ArrayList (c.getSites());
+				}
+			}
+			return SUCCESS;
+		}
+		return LOGIN;
+	}
+	
+	public String saveClient(){
+		if(session.get("login") != null && session.get("password") != null && session.get("login") != ""  )
+		{
+			if(!nomClient.trim().isEmpty() && !emailClient.trim().isEmpty() && (materielsClient != null && !materielsClient.equals(""))){
+				Client c = new Client(idClient, nomClient, emailClient);
+				Set<Materiel> listChoixMateriels = new HashSet<Materiel>();
+				String[] tabMateriel = materielsClient.split(",");
+				for (String string : tabMateriel) {
+					Materiel m1 = iemplacementMateriel.findMaterielById(Integer.parseInt(string.trim()));
+					listChoixMateriels.add(m1);
+				}
+				c.setMateriels(listChoixMateriels);
+				
+				Set<Site> listChoixSites = new HashSet<Site>();
+				for (Materiel m : listChoixMateriels) {
+					listChoixSites.add(iemplacementMateriel.findSiteById( m.getSalle().getEtage().getBatiment().getSite().getId()));					
+				}			
+				c.setSites(listChoixSites);
+				c = iclient.editClient(c);
+				return SUCCESS;
+			}
+			return ERROR;
 		}
 		return LOGIN;
 	}

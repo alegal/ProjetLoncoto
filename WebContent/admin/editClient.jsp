@@ -10,24 +10,23 @@
 <body>
 <jsp:include page="/menu.html" />
 <fieldset>
-<legend><h3>Ajout/Modification</h3></legend>
+<legend><h3>Ajout/Modification d'un client</h3></legend>
 
 <center>
 <s:form action="saveClient" >
 <s:hidden name="idClient"/>
 <s:textfield name="nomClient" label="Nom" />
-<s:textfield name="prenomClient" label="Prenom"  />
+<s:textfield name="emailClient" label="Email"  />
 <tr>
 	<td class="tdLabel">Matériel</td>
 	<td>
-		<s:property value="materielsClientBDD.size()"/>
 		<select name="materielsClient" multiple="multiple" >
 			<s:iterator value="materiels" var="m">
-				<s:if test="materielsClientBDD.contains( #m)">
-					<option value="${id}" selected="selected"><s:property value="nom"/></option>
+				<s:if test="listMaterielsClient.contains(#m)">
+					<option value="${id}" selected="selected"><s:property value="numSerie"/></option>
 				</s:if>
 				<s:else>
-					<option value="${id}"><s:property value="nom"/></option>
+					<option value="${id}"><s:property value="numSerie"/></option>
 				</s:else>
 			</s:iterator>
 		</select>

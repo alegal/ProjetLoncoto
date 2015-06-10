@@ -1,6 +1,7 @@
 package beans;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -10,8 +11,8 @@ public class Client
 	private int id;
 	private String nom;
 	private String email;
-	private List<Site> sites;
-	private List<Materiel> materiels;
+	private Set<Site> sites;
+	private Set<Materiel> materiels;
 	
 	@Id @GeneratedValue
 	public int getId() {
@@ -34,17 +35,17 @@ public class Client
 	}
 	
 	@ManyToMany
-	public List<Site> getSites() {
+	public Set<Site> getSites() {
 		return sites;
 	}
-	public void setSites(List<Site> sites) {
+	public void setSites(Set<Site> sites) {
 		this.sites = sites;
 	}
 	@OneToMany(mappedBy="client")
-	public List<Materiel> getMateriels() {
+	public Set<Materiel> getMateriels() {
 		return materiels;
 	}
-	public void setMateriels(List<Materiel> materiels) {
+	public void setMateriels(Set<Materiel> materiels) {
 		this.materiels = materiels;
 	}
 	

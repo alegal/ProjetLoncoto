@@ -132,6 +132,12 @@
     		<result name="error">edit.jsp</result>
     	</action>
     	
+    	<action name="saveClient" class="actions.AdminAction" method="saveClient">
+    		<result name="success" type="redirect">index</result>
+    		<result name="input">edit.jsp</result>
+    		<result name="error">edit.jsp</result>
+    	</action>
+    	
     	<action name="saveSite" class="actions.AdminAction" method="saveSite">
     		<result name="success" type="redirect">index</result>
     		<result name="input">edit.jsp</result>
@@ -151,6 +157,12 @@
     	</action>
     	
     	<action name="deleteGroupe" class="actions.AdminAction" method="deleteGroupe">
+    		<result name="success" type="redirect">index</result>
+    		<result name="error">index.jsp</result>
+    		<result name="login">/index.jsp</result>
+    	</action>
+    	
+    	<action name="deleteClient" class="actions.AdminAction" method="deleteClient">
     		<result name="success" type="redirect">index</result>
     		<result name="error">index.jsp</result>
     		<result name="login">/index.jsp</result>
