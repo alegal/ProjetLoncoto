@@ -111,6 +111,12 @@
     		<result name="input">edit.jsp</result>
     		<result name="error">edit.jsp</result>
     	</action>
+    	
+    	<action name="deleteIntervenant" class="actions.AdminAction" method="deleteIntervenant">
+    		<result name="success" type="redirect">index</result>
+    		<result name="error">index.jsp</result>
+    		<result name="login">/index.jsp</result>
+    	</action>
     </package>
     
 

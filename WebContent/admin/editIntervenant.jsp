@@ -6,12 +6,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Edition intervenants</title>
+<title>Edition d'intervenants</title>
 </head>
 <body>
 <jsp:include page="/menu.html" />
 <fieldset>
-<legend><h3>Ajout/Modification</h3></legend>
+<legend><h3>Ajout/Modification d'un intervenant</h3></legend>
 
 <center>
 <s:form action="save" >
@@ -24,8 +24,13 @@
 	<td class="tdLabel">Groupe</td>
 	<td>
 		<select name="groupeIntervenant" multiple="multiple" >
-			<s:iterator value="groupes">
-				<option value="${id}"><s:property value="libelle"/></option>
+			<s:iterator value="groupes" var="g">
+				<s:if test="listGroupesIntervenant.contains(#g)">
+					<option value="${id}" selected="selected"><s:property value="libelle"/></option>
+				</s:if>
+				<s:else>
+					<option value="${id}"><s:property value="libelle"/></option>
+				</s:else>
 			</s:iterator>
 		</select>
 	</td>

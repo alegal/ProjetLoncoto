@@ -23,42 +23,164 @@
 <div id="accordion" >
 <%-- <s:a action="addIntervention" style="color:blue !important;">Ajouter une intervention</s:a><br><br> --%>
 <h3>Liste des intervenants</h3>
-  <div>
-  	<s:a action="editIntervenant" style="color:blue !important;">Ajouter un intervenant</s:a><br><br>
+<div>
+ 	<s:a action="editIntervenant" style="color:blue !important;">Ajouter un intervenant</s:a><br><br>
+ 	<table border="2px">
+ 		<tr>
+ 			<th>Nom</th>
+ 			<th>Prenom</th>
+ 			<th>login</th>
+ 			<th colspan="2">Actions</th>
+ 		</tr>
+	   	<s:iterator value="intervenants">
+			<tr>
+				<td><s:property value="nom"/></td>
+				<td><s:property value="prenom"/></td>
+				<td><s:property value="login"/></td>
+				<td><s:a action="editIntervenant/%{id}">Modifier</s:a></td>
+				<td>
+					<form action="deleteIntervenant" method="post">
+						<s:hidden name="idIntervenant" value="%{id}" />
+						<input type="submit" value="Supprimer" />
+					</form>
+				</td>
+			</tr>
+		</s:iterator>
+ 	</table>
+</div>
+<h3>Liste des groupes</h3>
+<div>
+ 	<s:a action="editGroupe" style="color:blue !important;">Ajouter un groupe</s:a><br><br>
+ 	<table border="2px">
+ 		<tr>
+ 			<th>Libellé</th>
+ 			<th>Intervenant(s)</th>
+ 			<th colspan="2">Actions</th>
+ 		</tr>
+	   	<s:iterator value="groupes">
+			<tr>
+				<td><s:property value="libelle"/></td>
+				<td>
+					<s:iterator value="clients">
+						<s:property value="nom"/> - 
+					</s:iterator>
+				</td>
+				<td><s:a action="editGroupe/%{id}">Modifier</s:a></td>
+				<td>
+					<form action="deleteGroupe" method="post">
+						<s:hidden name="idGroupe" value="%{id}" />
+						<input type="submit" value="Supprimer" />
+					</form>
+				</td>
+			</tr>
+		</s:iterator>
+ 	</table>
+</div>
+<h3>Liste des matériels</h3>
+<div>
+  	<s:a action="editMateriel" style="color:blue !important;">Ajouter un matériel</s:a><br><br>
   	<table border="2px">
   		<tr>
-  			<th>Nom</th>
-  			<th>Prenom</th>
-  			<th>login</th>
-  			<th>Actions</th>
+  			<th>N° de série</th>
+  			<th>Type</th>
+  			<th>Emplacement</th>
+  			<th colspan="2">Actions</th>
   		</tr>
-    <s:iterator value="intervenants">
-	<tr>
-		<td><s:property value="nom"/></td>
-		<td><s:property value="prenom"/></td>
-		<td><s:property value="login"/></td>
-		<td><s:a action="editIntervenant/%{id}">Modifier</s:a></td>
-	</tr>
-	</s:iterator>
+	    <s:iterator value="materiels">
+			<tr>
+				<td><s:property value="numSerie"/></td>
+				<td><s:property value="typeIntervention"/></td>
+				<td>
+					<s:property value="salle.numSalle"/> - <s:property value="salle.etage.numEtage"/> -
+					<s:property value="salle.etage.batiment.numBat"/> - <s:property value="salle.etage.batiment.site.numSite"/>
+				</td>
+				<td><s:a action="editMateriel/%{id}">Modifier</s:a></td>
+				<td>
+					<form action="deleteMateriel" method="post">
+						<s:hidden name="idMateriel" value="%{id}" />
+						<input type="submit" value="Supprimer" />
+					</form>
+				</td>
+			</tr>
+		</s:iterator>
   	</table>
-  </div>
-<h3>Matériels</h3>
-  <div>
-    <s:iterator value="materiels">
-	<tr>
-	<td><s:property value="numSerie"/></td>
-	<td><s:a action="editMateriel/%{id}"><s:property value="materiel"/></s:a></td>
-	</tr>
-	</s:iterator>
-  </div>
-<h3>Clients</h3>
-  <div>
-    <s:iterator value="clients">
-	<tr>
-	<td><s:a action="editClient/%{id}"><s:property value="client"/></s:a></td>
-	</tr>
-	</s:iterator>
-  </div>
+</div>
+<h3>Liste des clients</h3>
+<div>
+ 	<s:a action="editClient" style="color:blue !important;">Ajouter un client</s:a><br><br>
+ 	<table border="2px">
+ 		<tr>
+ 			<th>Nom du client</th>
+ 			<th>Email client</th>
+ 			<th colspan="2">Actions</th>
+ 		</tr>
+	   	<s:iterator value="clients">
+			<tr>
+				<td><s:property value="nom"/></td>
+				<td><s:property value="email"/></td>
+				<td><s:a action="editClient/%{id}">Modifier</s:a></td>
+				<td>
+					<form action="deleteClient" method="post">
+						<s:hidden name="idClient" value="%{id}" />
+						<input type="submit" value="Supprimer" />
+					</form>
+				</td>
+			</tr>
+		</s:iterator>
+ 	</table>
+</div>
+<h3>Liste des sites</h3>
+<div>
+ 	<s:a action="editSite" style="color:blue !important;">Ajouter un site</s:a><br><br>
+ 	<table border="2px">
+ 		<tr>
+ 			<th>N° du site</th>
+ 			<th>Client(s)</th>
+ 			<th colspan="2">Actions</th>
+ 		</tr>
+	   	<s:iterator value="sites">
+			<tr>
+				<td><s:property value="numSite"/></td>
+				<td>
+					<s:iterator value="clients">
+						<s:property value="nom"/> - 
+					</s:iterator>
+				</td>
+				<td><s:a action="editSite/%{id}">Modifier</s:a></td>
+				<td>
+					<form action="deleteSite" method="post">
+						<s:hidden name="idSite" value="%{id}" />
+						<input type="submit" value="Supprimer" />
+					</form>
+				</td>
+			</tr>
+		</s:iterator>
+ 	</table>
+</div>
+<h3>Liste des bâtiments</h3>
+<div>
+ 	<s:a action="editBatiment" style="color:blue !important;">Ajouter un bâtiment</s:a><br><br>
+ 	<table border="2px">
+ 		<tr>
+ 			<th>N° bâtiment</th>
+ 			<th>Site</th>
+ 			<th colspan="2">Actions</th>
+ 		</tr>
+	   	<s:iterator value="batiments">
+			<tr>
+				<td><s:property value="numBat"/></td>
+				<td><s:property value="site.numSite"/></td>
+				<td><s:a action="editBatiment/%{id}">Modifier</s:a></td>
+				<td>
+					<form action="deleteBatiment" method="post">
+						<s:hidden name="idBatiment" value="%{id}" />
+						<input type="submit" value="Supprimer" />
+					</form>
+				</td>
+			</tr>
+		</s:iterator>
+ 	</table>
+</div>
 
 </div>
 </body>

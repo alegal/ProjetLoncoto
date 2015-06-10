@@ -20,4 +20,5 @@ public interface IIntervenant
 	public List<Intervention> findInterventionbySite(int site);
 	public List<Intervention> findInterventionbyClient(int client);
 	public List<Intervention> findInterventionbyDateCreation(Date dateCreation);
+	public void deleteIntervenant(Intervenant it);
 }

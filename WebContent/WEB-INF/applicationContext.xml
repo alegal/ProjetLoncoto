@@ -41,7 +41,7 @@
 
 <bean id="iusers"  class="utils.IntervenantDAO" />
 <bean id="igroup"  class="utils.GroupeDAO" />
-<bean id="localisationModel"  class="utils.EmplacementMaterielDAO" />
+<bean id="iemplacementMateriel"  class="utils.EmplacementMaterielDAO" />
 <bean id="iclient"  class="utils.ClientDAO" />
 
 <tx:annotation-driven transaction-manager="transactionManager" />

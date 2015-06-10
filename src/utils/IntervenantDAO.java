@@ -164,4 +164,10 @@ public class IntervenantDAO implements IIntervenant
 		}
 		
 	}
+	
+	@Transactional
+	public void deleteIntervenant(Intervenant it){
+		entityManager.remove(it);
+	}
+	
 }

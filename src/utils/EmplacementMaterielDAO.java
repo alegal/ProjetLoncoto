@@ -20,6 +20,11 @@ public class EmplacementMaterielDAO implements IEmplacementMateriel
 		this.entityManager = entityManager;
 	}
 
+
+	public List<Materiel> findAllMateriel() {
+		return entityManager.createQuery("FROM Materiel", Materiel.class).getResultList();
+	}
+
 	public List<Site> findAllSite() {
 		return entityManager.createQuery("FROM Site", Site.class).getResultList();
 	}

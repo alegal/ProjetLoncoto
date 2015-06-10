@@ -14,4 +14,5 @@ public interface IEmplacementMateriel
 	public List<Batiment> findAllBatiments();
 	public List<Etage> findAllEtage();
 	public Materiel findMaterielById(int id);
+	public List<Materiel> findAllMateriel();
 }
