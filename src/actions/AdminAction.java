@@ -502,6 +502,21 @@ public class AdminAction extends ActionSupport implements SessionAware
 		return LOGIN;
 	}
 	
+	public String deleteClient(){
+		if(session.get("login") != null && session.get("password") != null && session.get("login") != ""  ){
+			Client c = iclient.findById(idClient);
+			if(c != null)
+			{
+				if(c.getMateriels().size() == 0)
+				{
+					iemplacementMateriel.deleteClient(c);
+				}
+			}
+			return SUCCESS;
+		}
+		return LOGIN;
+	}
+	
 	public String editSite(){
 		if(session.get("login") != null && session.get("password") != null && session.get("login") != ""  ){
 			if( idSite > 0){

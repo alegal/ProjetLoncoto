@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.transaction.annotation.Transactional;
 
 import beans.Batiment;
+import beans.Client;
 import beans.Etage;
 import beans.Materiel;
 import beans.Salle;
@@ -107,5 +108,8 @@ public class EmplacementMaterielDAO implements IEmplacementMateriel
 		entityManager.remove(s);
 	}
 	
-
+	@Transactional
+	public void deleteClient(Client c) {
+		entityManager.remove(c);
+	}
 }

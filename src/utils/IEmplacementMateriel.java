@@ -3,6 +3,7 @@ package utils;
 import java.util.List;
 
 import beans.Batiment;
+import beans.Client;
 import beans.Etage;
 import beans.Intervenant;
 import beans.Intervention;
@@ -22,4 +23,5 @@ public interface IEmplacementMateriel
 	public Site findSiteById(int id);
 	public Site editSite(Site s);
 	public void deleteSite(Site s);
+	public void deleteClient(Client c);
 }
