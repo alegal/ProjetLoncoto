@@ -36,8 +36,8 @@
           
          <action name="editIntervention/*" class="actions.IntervenantAction" method="editIntervention">
     		<param name="interventionID">{1}</param>
-    		<result name="error" >/intervenant/edit.jsp</result>
     		<result name="success">/intervenant/edit_intervention.jsp</result>
+    		<result name="error" >/intervenant/list.jsp</result>
     	</action>
     	
     	<!-- Action de sauvegarde  -->
@@ -82,15 +82,29 @@
     		<result name="success">index.jsp</result>
     		<result name="error">/index.jsp</result>
     	</action>
+    	<action name="addIntervention" class="actions.AdminAction" method="addIntervention">
+    		<result name="error" >/intervenant/edit.jsp</result>
+    		<result name="success">/intervenant/edit_intervention.jsp</result>
+    	</action>
     	<action name="editIntervenant/*" class="actions.AdminAction" method="editIntervenant">
     		<param name="idIntervenant">{1}</param>
     		<result name="success">/admin/editIntervenant.jsp</result>
+    		<result name="login">/index.jsp</result>
+    	</action>
+    	<action name="editGroupe/*" class="actions.AdminAction" method="editGroupe">
+    		<param name="idGroupe">{1}</param>
+    		<result name="success">/admin/editGroupe.jsp</result>
     		<result name="login">/index.jsp</result>
     	</action>
         <action name="editClient/*" class="actions.AdminAction" method="editClient">
        		<param name="idClient">{1}</param>
     		<result name="error"  type="redirect">index</result>
     		<result name="success">/admin/editClient.jsp</result>
+    		<result name="login">/index.jsp</result>
+    	</action>
+    	<action name="editSite/*" class="actions.AdminAction" method="editSite">
+    		<param name="idSite">{1}</param>
+    		<result name="success">/admin/editSite.jsp</result>
     		<result name="login">/index.jsp</result>
     	</action>
         <action name="editBatiment/*" class="actions.AdminAction" method="editBatiment">
@@ -112,7 +126,37 @@
     		<result name="error">edit.jsp</result>
     	</action>
     	
+    	<action name="saveGroupe" class="actions.AdminAction" method="saveGroupe">
+    		<result name="success" type="redirect">index</result>
+    		<result name="input">edit.jsp</result>
+    		<result name="error">edit.jsp</result>
+    	</action>
+    	
+    	<action name="saveSite" class="actions.AdminAction" method="saveSite">
+    		<result name="success" type="redirect">index</result>
+    		<result name="input">edit.jsp</result>
+    		<result name="error">edit.jsp</result>
+    	</action>
+    	
     	<action name="deleteIntervenant" class="actions.AdminAction" method="deleteIntervenant">
+    		<result name="success" type="redirect">index</result>
+    		<result name="error">index.jsp</result>
+    		<result name="login">/index.jsp</result>
+    	</action>
+    	
+    	<action name="deleteIntervention" class="actions.AdminAction" method="deleteIntervention">
+    		<result name="success" type="redirect">index</result>
+    		<result name="error">index.jsp</result>
+    		<result name="login">/index.jsp</result>
+    	</action>
+    	
+    	<action name="deleteGroupe" class="actions.AdminAction" method="deleteGroupe">
+    		<result name="success" type="redirect">index</result>
+    		<result name="error">index.jsp</result>
+    		<result name="login">/index.jsp</result>
+    	</action>
+    	
+    	<action name="deleteSite" class="actions.AdminAction" method="deleteSite">
     		<result name="success" type="redirect">index</result>
     		<result name="error">index.jsp</result>
     		<result name="login">/index.jsp</result>

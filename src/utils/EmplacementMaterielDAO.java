@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import beans.Batiment;
 import beans.Etage;
 import beans.Materiel;
@@ -80,5 +82,30 @@ public class EmplacementMaterielDAO implements IEmplacementMateriel
 		}
 		return null;
 	}
+	
+	public Site findSiteById(int id){
+		if (id > 0){
+			return entityManager.find(Site.class, id);
+		}
+		return null;
+	}
+
+
+	@Transactional
+	public Site editSite(Site s) {
+		if(s == null) return s;
+		if(s.getId() != 0){
+			entityManager.merge(s);
+		}
+		else entityManager.persist(s);
+		return s;
+	}
+
+
+	@Transactional
+	public void deleteSite(Site s) {
+		entityManager.remove(s);
+	}
+	
 
 }

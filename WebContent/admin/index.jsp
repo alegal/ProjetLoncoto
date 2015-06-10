@@ -21,7 +21,42 @@
 <jsp:include page="/menu.html"   />
 <h2>Bienvenue <s:property value="session.login"/> du côté de l'administration</h2>
 <div id="accordion" >
-<%-- <s:a action="addIntervention" style="color:blue !important;">Ajouter une intervention</s:a><br><br> --%>
+<h3>Liste des interventions</h3>
+<div>
+ 	<s:a action="../editIntervention" style="color:blue !important;">Ajouter une intervention</s:a><br><br>
+ 	<table border="2px">
+ 		<tr>
+ 			<th>N° d'intervention</th>
+ 			<th>Date planifiée</th>
+ 			<th>Date de réalisation</th>
+ 			<th>Statut</th>
+ 			<th>Commentaire</th>
+ 			<th>Intervenant(s)</th>
+ 			<th colspan="2">Actions</th>
+ 		</tr>
+	   	<s:iterator value="interventions">
+			<tr>
+				<td><s:property value="numIntervention"/></td>
+				<td><s:property value="datePlanifiee"/></td>
+				<td><s:property value="dateRealisation"/></td>
+				<td><s:property value="statut"/></td>
+				<td><s:property value="commentaire"/></td>
+				<td>
+					<s:iterator value="intervenants">
+						<s:property value="nom"/> - 
+					</s:iterator>
+				</td>
+				<td><%-- <s:a action="editIntervenant/%{id}">Modifier</s:a> --%></td>
+				<td>
+					<form action="deleteIntervenant" method="post">
+						<s:hidden name="idIntervenant" value="%{id}" />
+						<input type="submit" value="Supprimer" />
+					</form>
+				</td>
+			</tr>
+		</s:iterator>
+ 	</table>
+</div>
 <h3>Liste des intervenants</h3>
 <div>
  	<s:a action="editIntervenant" style="color:blue !important;">Ajouter un intervenant</s:a><br><br>
@@ -29,14 +64,18 @@
  		<tr>
  			<th>Nom</th>
  			<th>Prenom</th>
- 			<th>login</th>
+ 			<th>Groupe(s)</th>
  			<th colspan="2">Actions</th>
  		</tr>
 	   	<s:iterator value="intervenants">
 			<tr>
 				<td><s:property value="nom"/></td>
 				<td><s:property value="prenom"/></td>
-				<td><s:property value="login"/></td>
+				<td>
+					<s:iterator value="groupes">
+						<s:property value="libelle"/> - 
+					</s:iterator>
+				</td>
 				<td><s:a action="editIntervenant/%{id}">Modifier</s:a></td>
 				<td>
 					<form action="deleteIntervenant" method="post">
@@ -61,7 +100,7 @@
 			<tr>
 				<td><s:property value="libelle"/></td>
 				<td>
-					<s:iterator value="clients">
+					<s:iterator value="intervenants">
 						<s:property value="nom"/> - 
 					</s:iterator>
 				</td>

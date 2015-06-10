@@ -1,5 +1,6 @@
 package actions;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +9,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import utils.IIntervenant;
 import beans.Client;
+import beans.Groupe;
 import beans.Intervenant;
 import beans.Intervention;
 
@@ -184,22 +186,21 @@ public class IntervenantAction extends ActionSupport implements SessionAware
 	// Accès à l'édition des interventions
 	public String editIntervention(){
 		if(session.get("login") != null && session.get("password") != null && session.get("login") != ""  ){
-			//System.out.println("nb" + interventionID);
-			if(interventionID != 0){
-				
+			if(interventionID > 0)
+			{	
 				intervention = InterventionByID(interventionID);
-				interventionID = intervention.getId();
-				numIntervention = intervention.getNumIntervention();
-				comIntervention = intervention.getCommentaire();
-				datePlanifieeIntervention = intervention.getDatePlanifiee();
-				statutIntervention = intervention.getStatut();
-				
-				return SUCCESS;
+				if( intervention != null)
+				{
+					interventionID = intervention.getId();
+					numIntervention = intervention.getNumIntervention();
+					comIntervention = intervention.getCommentaire();
+					datePlanifieeIntervention = intervention.getDatePlanifiee();
+					statutIntervention = intervention.getStatut();
+				}
 			}
-			return ERROR;
+			return SUCCESS;
 		}
 		return ERROR;
-		
 	}
 	
 	
@@ -215,6 +216,12 @@ public class IntervenantAction extends ActionSupport implements SessionAware
 				iusers.save(itv);
 				return SUCCESS;
 			}
+//			if(!numIntervention.trim().isEmpty() && !comIntervention.trim().isEmpty())
+//			{
+//				Intervention it = new Intervention(interventionID, numIntervention, datePlanifieeIntervention, new Date(), statutIntervention, comIntervention);
+//				//it = iusers.editIntervention(it);
+//				return SUCCESS;
+//			}
 			return ERROR;
 		}
 		return ERROR;

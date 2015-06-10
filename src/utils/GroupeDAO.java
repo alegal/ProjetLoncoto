@@ -27,4 +27,19 @@ public class GroupeDAO implements IGroupe
 	public Groupe findById(int id) {
 		return entityManager.find(Groupe.class, id);
 	}
+
+	@Transactional
+	public Groupe editGroupe(Groupe g) {
+		if(g == null) return g;
+		if(g.getId() != 0){
+			entityManager.merge(g);
+		}
+		else entityManager.persist(g);
+		return g;
+	}
+
+	@Transactional
+	public void deleteGroupe(Groupe g) {
+		entityManager.remove(g);
+	}
 }

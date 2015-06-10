@@ -12,6 +12,7 @@ import java.util.Map;
 
 
 
+
 import org.apache.struts2.interceptor.SessionAware;
 
 import utils.IClient;
@@ -24,6 +25,7 @@ import beans.Client;
 import beans.Etage;
 import beans.Groupe;
 import beans.Intervenant;
+import beans.Intervention;
 import beans.Materiel;
 import beans.Salle;
 import beans.Site;
@@ -42,6 +44,7 @@ public class AdminAction extends ActionSupport implements SessionAware
 	private List<Groupe> groupes;
 	private List<Etage> etages;
 	private List<Salle> salles;
+	private List<Intervention> interventions;
 	private IIntervenant iusers;
 	private IGroupe igroup;
 	private IEmplacementMateriel iemplacementMateriel;
@@ -53,6 +56,14 @@ public class AdminAction extends ActionSupport implements SessionAware
 	private String mdpIntervenant;
 	private String groupeIntervenant;
 	private List<Groupe> listGroupesIntervenant;
+	private int idIntervention;
+	private int idGroupe;
+	private String libelleGroupe;
+	private List<Intervenant> listIntervenantsGroupe;
+	private int idSite;
+	private String numSite;
+	private List<Client> listClientsSite;
+	
 	
 	public Map<String, Object> getSession() {return session;}
 	
@@ -65,7 +76,6 @@ public class AdminAction extends ActionSupport implements SessionAware
 	}
 	
 	public List<Materiel> getMateriels() {
-		System.out.println("Admin action : " +iemplacementMateriel.findAllMateriel().size());
 		return iemplacementMateriel.findAllMateriel();
 	}
 
@@ -127,6 +137,14 @@ public class AdminAction extends ActionSupport implements SessionAware
 
 	public void setSalles(List<Salle> salles) {
 		this.salles = salles;
+	}
+
+	public List<Intervention> getInterventions() {
+		return iusers.findAllIntervention();
+	}
+
+	public void setInterventions(List<Intervention> interventions) {
+		this.interventions = interventions;
 	}
 
 	public IIntervenant getIusers() {
@@ -217,6 +235,61 @@ public class AdminAction extends ActionSupport implements SessionAware
 		this.listGroupesIntervenant = listGroupesIntervenant;
 	}
 
+	public int getIdIntervention() {
+		return idIntervention;
+	}
+
+	public void setIdIntervention(int idIntervention) {
+		this.idIntervention = idIntervention;
+	}
+	
+	public int getIdGroupe() {
+		return idGroupe;
+	}
+
+	public void setIdGroupe(int idGroupe) {
+		this.idGroupe = idGroupe;
+	}
+
+	public String getLibelleGroupe() {
+		return libelleGroupe;
+	}
+
+	public void setLibelleGroupe(String libelleGroupe) {
+		this.libelleGroupe = libelleGroupe;
+	}
+
+	public List<Intervenant> getListIntervenantsGroupe() {
+		return listIntervenantsGroupe;
+	}
+
+	public void setListIntervenantsGroupe(List<Intervenant> listIntervenantsGroupe) {
+		this.listIntervenantsGroupe = listIntervenantsGroupe;
+	}
+
+	public int getIdSite() {
+		return idSite;
+	}
+
+	public void setIdSite(int idSite) {
+		this.idSite = idSite;
+	}
+
+	public String getNumSite() {
+		return numSite;
+	}
+
+	public void setNumSite(String numSite) {
+		this.numSite = numSite;
+	}
+
+	public List<Client> getListClientsSite() {
+		return listClientsSite;
+	}
+
+	public void setListClientsSite(List<Client> listClientsSite) {
+		this.listClientsSite = listClientsSite;
+	}
 
 	public String index(){
 		if(session.get("login") != null && session.get("password") != null && session.get("login") != ""  ){
@@ -254,7 +327,7 @@ public class AdminAction extends ActionSupport implements SessionAware
 				}
 				Intervenant iv = new Intervenant(idIntervenant, nomIntervenant, prenomIntervenant, loginIntervenant, mdpIntervenant);
 				iv.setGroupes(grp);
-				iv = iusers.addIntervenant(iv);
+				iv = iusers.editIntervenant(iv);
 				return SUCCESS;
 			}
 			return ERROR;
@@ -277,6 +350,93 @@ public class AdminAction extends ActionSupport implements SessionAware
 		return LOGIN;
 	}
 	
+	public String deleteIntervention(){
+		if(session.get("login") != null && session.get("password") != null && session.get("login") != ""  ){
+			Intervention it = iusers.findInterventionBYId(idIntervention);
+			if(it != null)
+			{
+				iusers.deleteIntervention(it);
+			}
+			return SUCCESS;
+		}
+		return LOGIN;
+	}
+	
+	public String editGroupe(){
+		if(session.get("login") != null && session.get("password") != null && session.get("login") != ""  ){
+			if( idGroupe > 0){
+				Groupe g = igroup.findById(idGroupe);
+				if( g != null){
+					libelleGroupe = g.getLibelle();
+					listIntervenantsGroupe = g.getIntervenants();
+				}
+			}
+			return SUCCESS;
+		}
+		return ERROR;
+	}
+	
+	public String saveGroupe(){
+		if(session.get("login") != null && session.get("password") != null && session.get("login") != ""  ){
+			if(!libelleGroupe.trim().isEmpty()){
+				Groupe g = new Groupe(idGroupe, libelleGroupe);
+				g = igroup.editGroupe(g);
+				return SUCCESS;
+			}
+			return ERROR;
+		}
+		return ERROR;
+	}
+	
+	public String deleteGroupe(){
+		if(session.get("login") != null && session.get("password") != null && session.get("login") != ""  ){
+			Groupe g = igroup.findById(idGroupe);
+			if(g != null)
+			{
+				igroup.deleteGroupe(g);
+			}
+			return SUCCESS;
+		}
+		return LOGIN;
+	}
+	
+	public String editSite(){
+		if(session.get("login") != null && session.get("password") != null && session.get("login") != ""  ){
+			if( idSite > 0){
+				Site s = iemplacementMateriel.findSiteById(idSite);
+				if( s != null){
+					numSite = s.getNumSite();
+					listClientsSite = s.getClients();
+				}
+			}
+			return SUCCESS;
+		}
+		return ERROR;
+	}
+	
+	public String saveSite(){
+		if(session.get("login") != null && session.get("password") != null && session.get("login") != ""  ){
+			if(!numSite.trim().isEmpty()){
+				Site s = new Site(idSite, numSite);
+				s = iemplacementMateriel.editSite(s);
+				return SUCCESS;
+			}
+			return ERROR;
+		}
+		return ERROR;
+	}
+	
+	public String deleteSite(){
+		if(session.get("login") != null && session.get("password") != null && session.get("login") != ""  ){
+			Site s = iemplacementMateriel.findSiteById(idSite);
+			if(s != null)
+			{
+				iemplacementMateriel.deleteSite(s);
+			}
+			return SUCCESS;
+		}
+		return LOGIN;
+	}
 	@Override
 	public void setSession(Map<String, Object> arg0) {
 		session = arg0;

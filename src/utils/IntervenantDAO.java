@@ -67,7 +67,7 @@ public class IntervenantDAO implements IIntervenant
 	}
 
 	@Transactional
-	public Intervenant addIntervenant(Intervenant iv){
+	public Intervenant editIntervenant(Intervenant iv){
 		if(iv == null) return iv;
 		if(iv.getId() != 0){
 			entityManager.merge(iv);
@@ -169,5 +169,8 @@ public class IntervenantDAO implements IIntervenant
 	public void deleteIntervenant(Intervenant it){
 		entityManager.remove(it);
 	}
-	
+	@Transactional
+	public void deleteIntervention(Intervention it){
+		entityManager.remove(it);
+	}
 }

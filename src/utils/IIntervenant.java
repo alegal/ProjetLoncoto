@@ -13,7 +13,7 @@ public interface IIntervenant
 	public Intervenant find(int id);
 	public List<Intervention> findAllIntervention();
 	public Intervention findInterventionBYId(int id);
-	public Intervenant addIntervenant(Intervenant iv);
+	public Intervenant editIntervenant(Intervenant iv);
 	public Intervention addIntervention(Intervention iv);
 	public Intervention save(Intervention intervention);
 	public List<Intervention> findInterventionbyStatut(int statut);
@@ -21,4 +21,5 @@ public interface IIntervenant
 	public List<Intervention> findInterventionbyClient(int client);
 	public List<Intervention> findInterventionbyDateCreation(Date dateCreation);
 	public void deleteIntervenant(Intervenant it);
+	public void deleteIntervention(Intervention it);
 }
